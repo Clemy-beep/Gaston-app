@@ -1,0 +1,15 @@
+{
+    "sqltools.connections": [
+        {
+            "server": "localhost",
+            "port": 9042,
+            "previewLimit": 50,
+            "driver": "Cassandra",
+            "name": "popaul",
+            "username": "superuser",
+            "password": ""
+        }
+    ],
+      "cmake.configureOnOpen": false,
+    "java.configuration.updateBuildConfiguration": "disabled"
+}

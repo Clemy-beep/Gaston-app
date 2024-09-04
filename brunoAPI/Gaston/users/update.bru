@@ -1,0 +1,22 @@
+meta {
+  name: update
+  type: http
+  seq: 5
+}
+
+put {
+  url: http://127.0.0.1:8000/users/1
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "firstname": "plopi",
+    "lastname": "plopa"
+  }
+}

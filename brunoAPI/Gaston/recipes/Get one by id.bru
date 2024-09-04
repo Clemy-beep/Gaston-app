@@ -1,0 +1,15 @@
+meta {
+  name: Get one by id
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://127.0.0.1:8000/recipes/3
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}

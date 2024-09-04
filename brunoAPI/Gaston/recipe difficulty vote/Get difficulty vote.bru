@@ -1,0 +1,22 @@
+meta {
+  name: Get difficulty vote
+  type: http
+  seq: 5
+}
+
+post {
+  url: http://127.0.0.1:8000/recipe-difficulty-votes
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "id_recipe": 3,
+    "difficulty": 3
+  }
+}

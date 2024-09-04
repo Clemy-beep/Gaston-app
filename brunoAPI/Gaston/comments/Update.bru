@@ -1,0 +1,21 @@
+meta {
+  name: Update
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://127.0.0.1:8000/comments/5
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "comment": "Update de commentaire"
+  }
+}

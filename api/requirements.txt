@@ -1,0 +1,28 @@
+# api 
+fastapi[standard]
+pydantic # data validation
+
+# security
+bcrypt # password hashing
+
+# postgresql
+databases
+sqlalchemy
+asyncpg
+
+psycopg2-binary
+
+# upload
+python-multipart
+
+# test
+pytest
+
+# migrations
+alembic
+
+# debug: dev server
+uvicorn
+
+# jwt
+PyJWT

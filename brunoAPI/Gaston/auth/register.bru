@@ -1,0 +1,23 @@
+meta {
+  name: register
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://127.0.0.1:8000/auth/register
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "password": "test2",
+    "firstname": "test2",
+    "lastname": "aeazdaa",
+    "biography": "An example biogrzzzaphy.",
+    "roles": "user",
+    "email": "test2@eazdnaon.com",
+    "username": "test2"
+  }
+}

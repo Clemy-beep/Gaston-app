@@ -1,0 +1,56 @@
+services:
+  web:
+    build: ./api
+    container_name: fastapi_app
+    restart: unless-stopped
+    ports:
+      - 3010:80
+    depends_on:
+      - db
+    # networks:
+    #   - proxy-wololo
+    
+    # env_file:
+    #   - ./environment/.env # Utiliser la variable ENV_FILE pour choisir le bon fichier d'environnement
+    
+    environment:
+      DATABASE_URL: postgresql://dev:dev@db:5432/gaston
+
+    volumes:
+      - ./api/app/images:/code/app/images:rw
+
+    # environment:
+    #   DATABASE_URL: ${DATABASE_URL}
+          
+     
+  db:
+    image: postgres:16
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+
+    # env_file:
+    #    - ./environment/.env
+
+    environment:
+      # POSTGRES_USER: ${POSTGRES_USER} #dev
+      # POSTGRES_PASSWORD: ${POSTGRES_PASSWORD} #dev
+      # POSTGRES_DB: ${POSTGRES_DB} #gaston
+
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: dev
+      POSTGRES_DB: gaston
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data:rw
+    
+    # networks:
+    #   - proxy-wololo
+
+volumes:
+  postgres_data:
+
+# networks:
+#   proxy-wololo:
+#     external:
+#       name: wololo

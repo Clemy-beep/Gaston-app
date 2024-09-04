@@ -1,0 +1,35 @@
+name: Deploy to Server Debian
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches: [ "Main" ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up SSH
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Verify SSH connection
+      run: ssh -vvv -o StrictHostKeyChecking=no debian@gaston.casadiny.ovh 'echo "SSH connection successful"'
+    
+    - name: Deploy to Server via SSH
+      run: |
+        ssh -o StrictHostKeyChecking=no debian@gaston.casadiny.ovh << 'EOF'
+          cd ~/Gaston
+          docker-compose down
+          git pull origin main
+          docker-compose -f "docker-compose prod.yml" --env-file ./environment/.env up --build -d
+        EOF
+        

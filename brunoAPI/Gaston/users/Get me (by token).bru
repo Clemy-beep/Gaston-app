@@ -1,0 +1,15 @@
+meta {
+  name: Get me (by token)
+  type: http
+  seq: 6
+}
+
+get {
+  url: http://127.0.0.1:8000/users/me
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
